@@ -40,7 +40,8 @@ This project is a capstone for SWE5006 (DMSS, NUS) and demonstrates modern softw
 
 ## Screenshots
 
-> _Add screenshots or GIFs here to showcase the UI and quiz flow._
+![game](./public/1.png)
+![game](./public/2.png)
 
 ---
 
@@ -101,6 +102,7 @@ This project uses [Playwright](https://playwright.dev/) for end-to-end testing. 
    ```bash
    npm run dev
    ```
+   ![3](./public/3.png)
 2. **Run all tests (in a separate terminal):**
    ```bash
    npm run test
@@ -185,6 +187,7 @@ The following test cases are implemented and validated by automated tests:
 - **Score Calculation**: Final score matches the number of correct answers selected.
 - **Timer Data Validation**: Timer starts at 30, is numeric, and decrements by 1 each second.
 
+
 ---
 
 ## Contributing
@@ -192,10 +195,6 @@ The following test cases are implemented and validated by automated tests:
 Contributions are welcome! Please open issues or pull requests for bug fixes, improvements, or new features. For major changes, discuss them in an issue first.
 
 ---
-
-## License
-
-This project is licensed under the MIT License.
 
 ## Setup Instructions
 
@@ -255,6 +254,7 @@ npm run dev
 ```bash
 npm run test
 ```
+![4](./public/4.png)
 
 3. **Run tests with UI mode:**
 
