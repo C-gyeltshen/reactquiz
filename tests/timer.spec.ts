@@ -41,20 +41,22 @@ test.describe("Timer Tests", () => {
     // Start the quiz
     await page.click("text=Start Quiz");
     await page.waitForSelector('[data-testid="timer"]');
-    
+
     // Modify the timer directly in the app state to force it to expire
     await page.evaluate(() => {
       // Force the timeLeft state to 0 by dispatching our custom event
-      const event = new CustomEvent('mock-timer-expiry');
+      const event = new CustomEvent("mock-timer-expiry");
       document.dispatchEvent(event);
     });
-    
+
     // We need a timeout here to allow React to process the state change
     await page.waitForTimeout(1000);
-    
+
     // Verify game over screen is shown
-    await expect(page.locator('[data-testid="game-over"]')).toBeVisible({ timeout: 5000 });
-    
+    await expect(page.locator('[data-testid="game-over"]')).toBeVisible({
+      timeout: 5000,
+    });
+
     // Verify final score is shown
     await expect(page.locator('[data-testid="final-score"]')).toBeVisible();
   });

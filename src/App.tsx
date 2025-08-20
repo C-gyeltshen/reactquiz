@@ -30,7 +30,7 @@ function App() {
     }
     return () => clearInterval(timer);
   }, [gameState]);
-  
+
   // Add a special handler for testing timer expiry
   useEffect(() => {
     // This listener helps with testing by allowing us to force timer expiry
@@ -38,9 +38,9 @@ function App() {
       setTimeLeft(0);
       setGameState("end");
     };
-    
+
     document.addEventListener("mock-timer-expiry", handleMockTimerExpiry);
-    
+
     return () => {
       document.removeEventListener("mock-timer-expiry", handleMockTimerExpiry);
     };

@@ -87,9 +87,9 @@ test.describe("Edge Cases", () => {
     // Click start button once and wait for the question card to appear
     await Promise.all([
       page.click("text=Start Quiz"),
-      page.waitForSelector('[data-testid="question-card"]')
+      page.waitForSelector('[data-testid="question-card"]'),
     ]);
-    
+
     // At this point, we're already in the quiz, so the "Start Quiz" button should be gone
 
     // Verify timer starts normally (not multiple timers)

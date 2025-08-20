@@ -1,14 +1,201 @@
-## SWE5006 Capstone Project: Kahoot Clone
+# Kahoot Clone – React Quiz App
 
-This repository contains the capstone project for SWE5006 - Graduate Certificate in Designing Modern Software Systems (DMSS) at the National University of Singapore (NUS).
-
-### Project Overview
-
-The topic of this project is a Kahoot clone—a real-time, interactive quiz application inspired by the popular Kahoot platform. The goal is to demonstrate modern software design principles and full-stack development skills.
+> **A modern, interactive quiz application inspired by Kahoot, built with React, TypeScript, Vite, Tailwind CSS, and Playwright.**
 
 ---
 
-For setup instructions and further details, see below.
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+- [Testing](#testing)
+- [Docker Usage](#docker-usage)
+- [Functional Test Cases](#functional-test-cases)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Project Overview
+
+This project is a capstone for SWE5006 (DMSS, NUS) and demonstrates modern software design and testing practices. It is a single-page web app that lets users take a timed quiz, get instant feedback, and see their score at the end. The app is inspired by Kahoot but is fully self-contained and open source.
+
+---
+
+## Features
+
+- **Modern UI**: Responsive, mobile-friendly, and visually appealing interface using Tailwind CSS and Lucide icons.
+- **Quiz Flow**: Start, play, and complete a quiz with instant feedback on each answer.
+- **Timer**: 30-second countdown per quiz session, with visual warning when time is low.
+- **Score Tracking**: Real-time score updates and final score summary.
+- **Game State Management**: Start, playing, and game-over states with smooth transitions.
+- **Edge Case Handling**: Prevents rapid/multiple clicks, handles browser refresh, and resets state as expected.
+- **Comprehensive Testing**: End-to-end tests with Playwright, including UI, UX, and edge cases.
+- **Data Validation**: Ensures question data integrity and correct scoring.
+
+---
+
+## Screenshots
+
+> _Add screenshots or GIFs here to showcase the UI and quiz flow._
+
+---
+
+## Architecture
+
+- **Frontend**: React + TypeScript (Vite)
+- **Styling**: Tailwind CSS, Lucide React icons
+- **Testing**: Playwright for E2E, ESLint for linting
+- **Project Structure:**
+  - `src/` – Main source code (components, data, types)
+  - `test/` and `tests/` – Playwright test suites
+  - `public/` – Static assets
+  - `scripts/` – Test report generation
+  - `Dockerfile` – Containerization support
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18 or newer recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+
+### Installation & Local Development
+
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   The app will be available at [http://localhost:5173](http://localhost:5173).
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+4. **Preview the production build:**
+   ```bash
+   npm run preview
+   ```
+5. **Lint the codebase:**
+   ```bash
+   npm run lint
+   ```
+
+---
+
+## Testing
+
+This project uses [Playwright](https://playwright.dev/) for end-to-end testing. Tests cover quiz flow, timer, game state, UI/UX, edge cases, and data validation.
+
+### Running Tests
+
+1. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+2. **Run all tests (in a separate terminal):**
+   ```bash
+   npm run test
+   ```
+3. **Run tests with UI mode:**
+   ```bash
+   npm run test:ui
+   ```
+4. **Run tests in debug mode:**
+   ```bash
+   npm run test:debug
+   ```
+5. **View test reports:**
+   ```bash
+   npm run test:report
+   ```
+6. **Generate a markdown test report:**
+   ```bash
+   npm run test:md-report
+   ```
+
+#### Test Coverage
+
+- Quiz flow, timer, game state, UI/UX, edge cases, and data validation are all covered.
+- See [TEST_PLAN.md](./TEST_PLAN.md) and [TEST_SUMMARY.md](./TEST_SUMMARY.md) for details.
+
+---
+
+## Docker Usage
+
+You can run the app in a Docker container:
+
+1. **Build the Docker image:**
+   ```bash
+   docker build -t quiz-app .
+   ```
+2. **Run the container:**
+   ```bash
+   docker run -p 3000:3000 quiz-app
+   ```
+   The app will be available at [http://localhost:3000](http://localhost:3000).
+
+---
+
+## Functional Test Cases
+
+The following test cases are implemented and validated by automated tests:
+
+### 1. Quiz Flow Tests
+
+- **Start Quiz**: Quiz starts from the initial screen, timer initializes to 30 seconds, and the first question is displayed.
+- **Answer Selection**: Selecting an answer highlights it, provides feedback, and auto-advances after 1.5 seconds.
+- **Correct Answer Scoring**: Selecting the correct answer increases the score and shows positive feedback.
+- **Incorrect Answer Handling**: Selecting an incorrect answer does not increase the score, highlights the correct answer, and shows negative feedback.
+- **Complete Quiz**: Quiz ends after the last question, and the final score is displayed.
+
+### 2. Timer Tests
+
+- **Timer Countdown**: Timer counts down from 30 to 0 in 1-second intervals during the quiz.
+- **Timer Expiry**: Quiz ends automatically when the timer reaches 0, and the final score is shown.
+- **Timer Visual Feedback**: Visual warning (e.g., color change) when timer is low (≤10 seconds).
+
+### 3. Game State Tests
+
+- **Restart Quiz**: Clicking the restart button resets the quiz to the start state, with score and question index reset.
+- **Question Navigation**: Question counter advances correctly and new questions are displayed as answers are selected.
+
+### 4. UI/UX Tests
+
+- **Responsive Design**: Layout adapts properly to different screen sizes.
+- **Visual Feedback**: Selected answers and feedback (correct/incorrect) are visually distinct.
+
+### 5. Edge Case Tests
+
+- **Rapid Answer Selection**: Only the first answer is registered if multiple options are clicked quickly.
+- **Multiple Start Clicks**: Rapid clicking of the start button does not start multiple games or timers.
+- **Browser Refresh**: Refreshing the browser during a quiz resets the game to the start state (no persistence).
+
+### 6. Data Validation Tests
+
+- **Question Data Integrity**: All questions have 4 options and valid correct answer indices.
+- **Score Calculation**: Final score matches the number of correct answers selected.
+- **Timer Data Validation**: Timer starts at 30, is numeric, and decrements by 1 each second.
+
+---
+
+## Contributing
+
+Contributions are welcome! Please open issues or pull requests for bug fixes, improvements, or new features. For major changes, discuss them in an issue first.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
 
 ## Setup Instructions
 
