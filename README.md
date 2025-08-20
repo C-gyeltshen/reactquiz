@@ -147,6 +147,23 @@ You can run the app in a Docker container:
 
 ---
 
+## GitHub & Slack Integration
+
+This project is integrated with Slack to receive real-time notifications for both new commits and GitHub Actions workflows (such as Playwright test runs). This ensures the team is always up-to-date on code changes and CI/CD status.
+
+### How it works
+
+- **Commit Notifications:** Every new commit pushed to the repository triggers a Slack message in the designated channel, showing the commit message, author, and a link to the commit.
+- **Workflow Notifications:** When a GitHub Actions workflow (e.g., Playwright tests) runs, Slack receives a notification about the workflow status (success/failure) with details and links.
+
+#### Example Slack Notifications
+
+<!-- Replace the image filenames below with your actual screenshot filenames after uploading them to the public/ directory -->
+
+![Slack Commit Notification](./public/5.png)
+
+---
+
 ## Functional Test Cases
 
 The following test cases are implemented and validated by automated tests:
@@ -186,7 +203,6 @@ The following test cases are implemented and validated by automated tests:
 - **Question Data Integrity**: All questions have 4 options and valid correct answer indices.
 - **Score Calculation**: Final score matches the number of correct answers selected.
 - **Timer Data Validation**: Timer starts at 30, is numeric, and decrements by 1 each second.
-
 
 ---
 
@@ -254,6 +270,7 @@ npm run dev
 ```bash
 npm run test
 ```
+
 ![4](./public/4.png)
 
 3. **Run tests with UI mode:**
@@ -412,5 +429,3 @@ The following test cases can be used to validate the application functionality:
 - **Precondition**: Complete quiz with known correct/incorrect answers
 - **Steps**: Answer specific pattern of questions
 - **Expected**: Final score matches expected calculation (correct answers / total questions)
-
-
